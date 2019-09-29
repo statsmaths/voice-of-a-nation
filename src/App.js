@@ -26,7 +26,12 @@ class TextBox extends React.Component {
       return <span>Waiting...</span>
     }
 
-    const data = md.render(this.props.pagedata);
+    console.log(this.props.page);
+    if (typeof this.props.pagedata != 'string') {
+      return (this.props.pagedata)
+    }
+
+    const data = this.props.pagedata;
     function createMarkup() { return {__html: data}; };
 
     return(
@@ -233,13 +238,47 @@ class Viewer extends React.Component {
         data: null,
       });
 
-      fetch("./data/layers/" + page + ".md").then(res => {
-        return res.text()
-      }).then(res => {
+      if (page === 0)
+      {
         this.setState({
-          pagedata: res,
+          pagedata: (<div id="textbox">
+            <h1> Table of Contents </h1>
+
+            <button class="toc-button" onClick={() => this.handleChangePage(1)}>
+              Layer 1: Introduction
+            </button>
+
+            <button class="toc-button"  onClick={() => this.handleChangePage(2)}>
+              Layer 2: Documenting People &amp; Histories
+            </button>
+
+            <button class="toc-button"  onClick={() => this.handleChangePage(3)}>
+              Layer 3: Placing the Life Histories
+            </button>
+
+            <button class="toc-button"  onClick={() => this.handleChangePage(4)}>
+              Layer 4: Distant Reading Rhetoric &amp; Style
+            </button>
+
+            <button class="toc-button"  onClick={() => this.handleChangePage(5)}>
+              Layer 5: Method
+            </button>
+
+            <button class="toc-button"  onClick={() => this.handleChangePage(6)}>
+              Layer 6: About
+            </button>
+            </div>
+          )
         });
-      });
+      } else {
+        fetch("./data/layers/" + page + ".md").then(res => {
+          return res.text()
+        }).then(res => {
+          this.setState({
+            pagedata: md.render(res),
+          });
+        });
+      }
   }
 
   render() {
@@ -327,14 +366,11 @@ class Viewer extends React.Component {
     <div>
     <div id="header">
 
-      <span onClick={() => this.handleWelcome(true)}>
+      <span onClick={() => this.handleChangePage(0)}>
         Voice of a Nation: Life Histories in New Deal America
       </span>
 
       <div className="btn-group">
-        <button
-          className={this.state.page === 0 ? "active" : ""}
-          onClick={() => this.handleChangePage(0)}>0</button>
         <button
           className={this.state.page === 1 ? "active" : ""}
           onClick={() => this.handleChangePage(1)}>1</button>
@@ -351,12 +387,16 @@ class Viewer extends React.Component {
           className={this.state.page === 5 ? "active" : ""}
           onClick={() => this.handleChangePage(5)}>5</button>
         <button
-          className={this.state.page === 6 ? "btn-text active" : "btn-text"}
-          onClick={() => this.handleChangePage(6)}>About</button>
+          className={this.state.page === 6 ? "active" : ""}
+          onClick={() => this.handleChangePage(6)}>6</button>
+        <button
+          className={this.state.page === 0 ? "btn-text active" : "btn-text"}
+          onClick={() => this.handleChangePage(0)}>Contents</button>
       </div>
     </div>
 
     <TextBox
+      page={this.state.page}
       pagedata={this.state.pagedata}
     />
 
@@ -364,7 +404,7 @@ class Viewer extends React.Component {
       <div
         id="welcome-container"
         className={this.state.welcome ? "" : "hidden"}>
-        <div className="welcome-msg">
+        <div className="welcome-msg" onClick={() => this.handleWelcome(false)}>
           <h3>Mapping Southern Life Histories</h3>
           <p>
             The interactive map in this panel show over 1100 oral histories taken
@@ -392,7 +432,7 @@ class Viewer extends React.Component {
       </div>
       <div id="img-container" className={this.state.image >= 0 ? "" : "hidden"}>
         <div id="img-fig">
-          <img className="img-main" alt="" src="http://photogrammar.yale.edu/photos/service/pnp/fsa/8a25000/8a25900/8a25988v.jpg">
+          <img className="img-main" alt="" src="img/people.png">
           </img>
           <img
             className="svg-close"

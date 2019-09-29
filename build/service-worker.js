@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/voice-of-a-nation/build/precache-manifest.464cc9c533c11d473a7cc8ac4ed304e1.js"
+  "/voice-of-a-nation/build/precache-manifest.dca4fbde753d75c03669a1c542b4a3e4.js"
 );
 
 self.addEventListener('message', (event) => {
