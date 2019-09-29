@@ -39,5 +39,5 @@
   "devDependencies": {
     "gh-pages": "^2.1.1"
   },
-  "homepage": "http://statsmaths.github.io/voice-of-a-nation"
+  "homepage": "http://statsmaths.github.io/voice-of-a-nation/build/"
 }
