@@ -59,7 +59,7 @@ genderi[interviewer %in% c("William O. Forster")] <- "Male"
 racei[interviewer %in% c()] <- "Black"
 racei[interviewer %in% c()] <- "White"
 
-df <- tibble(id = seq_len(nrow(z)), filename=z$file_name,
+df <- tibble(id = seq_len(nrow(z)) - 1L, filename=z$file_name,
              title, interviewer, reviser, interviewee, date, location,
              gender, race, genderi, racei, interviewer_show,
              occupation, lat=NA, lon=NA)
@@ -109,9 +109,9 @@ cat(sprintf("{ value: '%s', label: '%s' },", value, label),sep="\n")
 
 ###############################################################################
 
-# for (i in seq_len(nrow(df)))
-# {
-#   json <- paste(sprintf('"%s": "%s"', names(df), matrix(df[i,])), collapse=",")
-#   json <- sprintf("{%s}", json)
-#   writeLines(json, sprintf("../public/data/interviews/%d.json", i))
-# }
+for (i in seq_len(nrow(df)))
+{
+  json <- paste(sprintf('"%s": "%s"', names(df), matrix(df[i,])), collapse=",")
+  json <- sprintf("{%s}", json)
+  writeLines(json, sprintf("../public/data/interviews/%d.json", i - 1))
+}

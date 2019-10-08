@@ -139,7 +139,10 @@ class InterviewBox extends React.Component {
               pdf (download)
             </button>
             <button
-              onClick={null}>
+              onClick={() => {
+                window.open("./data/xml/interview_" +
+                  padZeros(this.props.interviewdata.id, 4) + ".xml")
+              }}>
               xml
             </button>
             <button
@@ -182,7 +185,10 @@ class InterviewTopicBox extends React.Component {
             pdf
           </button>
           <button
-            onClick={null}>
+            onClick={() => {
+              window.open("./data/xml/interview_" +
+                padZeros(this.props.interviewdata.id, 4) + ".xml")
+            }}>
             xml
           </button>
           <button
@@ -524,7 +530,7 @@ class TopicContainer extends React.Component {
       );
     }
     if (this.state.topicstate === "topic") {
-      header = "Topic " + this.state.topic;
+      header = "Topic " + (this.state.topic + 1);
       description = (
         <p>
           Details of this topic, as identified by LDA, are shown below. Every
@@ -539,7 +545,7 @@ class TopicContainer extends React.Component {
       );
     }
     if (this.state.topicstate === "doc") {
-      header = "Document " + this.state.topicdoc;
+      header = "Document " + (this.state.topicdoc + 1);
       description = null;
     }
 

@@ -6,7 +6,7 @@ library(readr)
 
 cnlp_init_tokenizers()
 
-anno <- cnlp_annotate(input=dir("../public/data/text", full.names=TRUE))
+anno <- cnlp_annotate(input=dir("text", full.names=TRUE))
 tokens <- cnlp_get_token(anno)
 tokens$lemma <- stri_trans_tolower(tokens$word)
 X <- cnlp_utils_tfidf(tokens, type="tf", tf_weight = "raw", min_df=0.05, max_df=0.5)
@@ -22,14 +22,13 @@ terms <- model@terms
 beta <- model@beta
 gamma <- model@gamma
 
-
 meta <- read_csv("fwp_metadata_20190330.csv")
 dindex <- as.numeric(stri_sub(dir("../public/data/text/"), 11, 14))
 doc_names <- meta$title[dindex]
 doc_names[is.na(doc_names)] <- sprintf("Interview %d", which(is.na(doc_names)))
 
-these <- which(stri_length(doc_names) > 30)
-doc_names[these] <- sprintf("%s...", stri_sub(doc_names[these], 1, 26))
+these <- which(stri_length(doc_names) > 25)
+doc_names[these] <- sprintf("%s...", stri_sub(doc_names[these], 1, 22))
 
 all <- vector("list", nrow(beta))
 top_words <- as.character(apply(get_terms(model, k=5), 2, paste, collapse=";"))
@@ -59,7 +58,7 @@ for (i in seq_len(nrow(beta))) {
 
   topics[[i]] <- list(
     num=i,
-    top_docs_ids=top_docs_ids - 1L,
+    top_docs_ids=dindex[top_docs_ids] - 1L,
     top_docs=top_docs,
     doc_perc=doc_perc,
     top_word=top_word,
@@ -67,7 +66,8 @@ for (i in seq_len(nrow(beta))) {
   )
 }
 
-docs <- vector("list", nrow(gamma))
+docs <- vector("list", nrow(meta))
+
 for (i in seq_len(nrow(gamma))) {
   top_topics_ids <- order(gamma[i,],decreasing=TRUE)
   top_topics <- sprintf("Topic %d", top_topics_ids)
@@ -75,9 +75,8 @@ for (i in seq_len(nrow(gamma))) {
 
   num_include <- sum(topic_weights > 0)
 
-  docs[[i]] <- list(
+  docs[[dindex[i]]] <- list(
     num=i,
-    doc=docs[i],
     top_topics_ids=top_topics_ids[seq_len(num_include)] - 1L,
     top_topics=top_topics[seq_len(num_include)],
     topic_weights=topic_weights[seq_len(num_include)]
