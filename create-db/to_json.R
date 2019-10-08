@@ -44,10 +44,25 @@ occupation <- sprintf("%s; %s", z$occupation_1, z$occupation_2)
 occupation <- stri_replace_all(occupation, "", fixed="; NA")
 occupation[occupation == "NA"] <- ""
 
+interviewer <- z$interviewer_1
+racei <- rep("", nrow(z))
+genderi <- rep("", nrow(z))
+
+interviewer_show <- stri_trans_tolower(interviewer)
+interviewer_show <- stri_replace_all(interviewer_show, "", regex="[^a-z]*")
+interviewer_show[is.na(interviewer_show)] <- ""
+
+genderi[interviewer %in%
+c("Bernice Kelly Harris","Mary A. Hicks","Rose Shepherd",
+  "Sadie B. Hornsby", "Grace McCune", "")] <- "Female"
+genderi[interviewer %in% c("William O. Forster")] <- "Male"
+racei[interviewer %in% c()] <- "Black"
+racei[interviewer %in% c()] <- "White"
 
 df <- tibble(id = seq_len(nrow(z)), filename=z$file_name,
              title, interviewer, reviser, interviewee, date, location,
-             gender, race, occupation, lat=NA, lon=NA)
+             gender, race, genderi, racei, interviewer_show,
+             occupation, lat=NA, lon=NA)
 
 x <- read_csv("fwp_small_upload.csv")
 index <- match(df$filename, x$filename)
@@ -59,15 +74,25 @@ x <- df
 x <- x[!is.na(x$lat) & !is.na(x$lon),]
 
 x$gender_col <- "black"
-x$gender_col[x$gender == "Female"] <- "red"
-x$gender_col[x$gender == "Male"] <- "blue"
+x$gender_col[x$gender == "Female"] <- "#56B4E9"
+x$gender_col[x$gender == "Male"] <- "#E69F00"
 
 x$race_col <- "black"
-x$race_col[x$race == "Black"] <- "pink"
-x$race_col[x$race == "White"] <- "green"
+x$race_col[x$race == "Black"] <- "#009E73"
+x$race_col[x$race == "White"] <- "#CC79A7"
 
-json <- sprintf('{"lat": %f, "lon": %f, "title": "%s", "interviewer": "%s", "gender": "%s", "race": "%s", "id": %d}',
-                x$lat, x$lon, x$title, x$interviewer, x$gender_col, x$race_col, x$id)
+x$genderi_col <- "black"
+x$genderi_col[x$genderi == "Female"] <- "#56B4E9"
+x$genderi_col[x$genderi == "Male"] <- "#E69F00"
+
+x$racei_col <- "black"
+x$racei_col[x$racei == "Black"] <- "#009E73"
+x$racei_col[x$racei == "White"] <- "#CC79A7"
+
+json <- sprintf('{"lat": %f, "lon": %f, "title": "%s", "interviewer": "%s", "ishow": "%s", "gender": "%s", "race": "%s", "genderi": "%s", "racei": "%s", "id": %d}',
+                x$lat, x$lon, x$title, x$interviewer, x$interviewer_show,
+                x$gender_col, x$race_col,
+                x$genderi_col, x$racei_col, x$id)
 
 txt <- sprintf("[%s]", paste(json, collapse=","))
 
@@ -75,9 +100,18 @@ writeLines(txt, "../public/data/geodata.json")
 
 ###############################################################################
 
-for (i in seq_len(nrow(df)))
-{
-  json <- paste(sprintf('"%s": "%s"', names(df), matrix(df[i,])), collapse=",")
-  json <- sprintf("{%s}", json)
-  writeLines(json, sprintf("../public/data/interviews/%d.json", i))
-}
+tab <- sort(table(interviewer), decreasing=TRUE)[1:10]
+label <- sprintf("%s [%d]", names(tab), as.numeric(tab))
+value <- stri_replace_all(stri_trans_tolower(names(tab)), "", regex="[^a-z]*")
+
+cat(sprintf("{ value: '%s', label: '%s' },", value, label),sep="\n")
+
+
+###############################################################################
+
+# for (i in seq_len(nrow(df)))
+# {
+#   json <- paste(sprintf('"%s": "%s"', names(df), matrix(df[i,])), collapse=",")
+#   json <- sprintf("{%s}", json)
+#   writeLines(json, sprintf("../public/data/interviews/%d.json", i))
+# }

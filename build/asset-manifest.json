@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/voice-of-a-nation/build/static/css/main.5c233db1.chunk.css",
-    "main.js": "/voice-of-a-nation/build/static/js/main.f9a53f33.chunk.js",
-    "main.js.map": "/voice-of-a-nation/build/static/js/main.f9a53f33.chunk.js.map",
+    "main.css": "/voice-of-a-nation/build/static/css/main.a4b6e39f.chunk.css",
+    "main.js": "/voice-of-a-nation/build/static/js/main.fcd5a4c4.chunk.js",
+    "main.js.map": "/voice-of-a-nation/build/static/js/main.fcd5a4c4.chunk.js.map",
     "runtime-main.js": "/voice-of-a-nation/build/static/js/runtime-main.1a20ec7b.js",
     "runtime-main.js.map": "/voice-of-a-nation/build/static/js/runtime-main.1a20ec7b.js.map",
-    "static/css/2.3f7c2b79.chunk.css": "/voice-of-a-nation/build/static/css/2.3f7c2b79.chunk.css",
-    "static/js/2.4a2ec4c5.chunk.js": "/voice-of-a-nation/build/static/js/2.4a2ec4c5.chunk.js",
-    "static/js/2.4a2ec4c5.chunk.js.map": "/voice-of-a-nation/build/static/js/2.4a2ec4c5.chunk.js.map",
+    "static/css/2.e507870e.chunk.css": "/voice-of-a-nation/build/static/css/2.e507870e.chunk.css",
+    "static/js/2.fe9888cc.chunk.js": "/voice-of-a-nation/build/static/js/2.fe9888cc.chunk.js",
+    "static/js/2.fe9888cc.chunk.js.map": "/voice-of-a-nation/build/static/js/2.fe9888cc.chunk.js.map",
     "index.html": "/voice-of-a-nation/build/index.html",
-    "precache-manifest.dca4fbde753d75c03669a1c542b4a3e4.js": "/voice-of-a-nation/build/precache-manifest.dca4fbde753d75c03669a1c542b4a3e4.js",
+    "precache-manifest.8b2cbb4cf0e98b1361bd0e701ea4bd2a.js": "/voice-of-a-nation/build/precache-manifest.8b2cbb4cf0e98b1361bd0e701ea4bd2a.js",
     "service-worker.js": "/voice-of-a-nation/build/service-worker.js",
-    "static/css/2.3f7c2b79.chunk.css.map": "/voice-of-a-nation/build/static/css/2.3f7c2b79.chunk.css.map",
-    "static/css/main.5c233db1.chunk.css.map": "/voice-of-a-nation/build/static/css/main.5c233db1.chunk.css.map"
+    "static/css/2.e507870e.chunk.css.map": "/voice-of-a-nation/build/static/css/2.e507870e.chunk.css.map",
+    "static/css/main.a4b6e39f.chunk.css.map": "/voice-of-a-nation/build/static/css/main.a4b6e39f.chunk.css.map"
   }
 }

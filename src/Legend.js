@@ -18,12 +18,12 @@ class Legend extends MapControl {
       if (this.props.color === "gender")
       {
         names = ["Female", "Male", "Unknown"];
-        colors = ["blue", "red", "black"]
+        colors = ["#56B4E9", "#E69F00", "black"]
       }
       if (this.props.color === "race")
       {
         names = ["Black", "White", "Unknown"];
-        colors = ["green", "pink", "black"]
+        colors = ["#009E73", "#CC79A7", "black"]
       }
 
       let labels = [];
