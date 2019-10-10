@@ -752,7 +752,7 @@ class Viewer extends React.Component {
             </button>
 
             <button className="toc-button"  onClick={() => this.handlePage(5)}>
-              Layer 4: Distant Reading
+              Layer 4: Textual Analysis
             </button>
 
             <button className="toc-button"  onClick={() => this.handlePage(6)}>
