@@ -735,12 +735,6 @@ class Viewer extends React.Component {
           pagedata: (<div id="textbox"><div>
             <h1 style={{paddingTop: "0px"}}> Table of Contents </h1>
 
-            <button
-              className="toc-button toc-button-prop"
-              onClick={() => this.handlePage(8)}>
-              <b>Proposal</b>
-            </button>
-
             <button className="toc-button" onClick={() => this.handlePage(1)}>
               Introduction
             </button>
