@@ -1,11 +1,18 @@
 import React from 'react';
 import Dropdown from 'react-dropdown';
-import { Remarkable } from 'remarkable';
 
 import {
   Map, CircleMarker, TileLayer, ZoomControl, Tooltip
 } from 'react-leaflet';
 import Legend from "./Legend";
+import { Layer0 } from "./layers/Layer0";
+import { Layer1 } from "./layers/Layer1";
+import { Layer2 } from "./layers/Layer2";
+import { Layer3 } from "./layers/Layer3";
+import { Layer4 } from "./layers/Layer4";
+import { Layer5 } from "./layers/Layer5";
+import { Layer6 } from "./layers/Layer6";
+import { Layer7 } from "./layers/Layer7";
 
 import 'leaflet/dist/leaflet.css';
 import 'react-dropdown/style.css';
@@ -20,41 +27,82 @@ function padZeros(number, pad) {
 }
 
 // ***************************************************************************
-// Return the text box by rendering the markdown files
-
-// This takes markdown and outputs formated text as a string
-var md = new Remarkable({
-  html: true,
-  xhtmlOut: true,
-  typographer: true,
-});
+// Return the text box
 
 class TextBox extends React.Component {
 
   render() {
-    if (!this.props.pagedata) {
-      return <span>Waiting...</span>
-    }
 
-    if (typeof this.props.pagedata != 'string') {
-      return (this.props.pagedata)
+    // *************************************************************
+    var data = null;
+    if (this.props.page === 0)
+    {
+      data = <Layer0
+        handlePage={this.props.handlePage}
+      />;
     }
+    if (this.props.page === 1)
+    {
+      data = <Layer1
+        handlePage={this.props.handlePage}
+      />;
+    }
+    if (this.props.page === 2)
+    {
+      data = <Layer2
+        handlePage={this.props.handlePage}
+      />;
+    }
+    if (this.props.page === 3)
+    {
+      data = <Layer3
+        handlePage={this.props.handlePage}
+      />;
+    }
+    if (this.props.page === 4)
+    {
+      data = <Layer4
+        handlePage={this.props.handlePage}
+      />;
+    }
+    if (this.props.page === 5)
+    {
+      data = <Layer5
+        handlePage={this.props.handlePage}
+      />;
+    }
+    if (this.props.page === 6)
+    {
+      data = <Layer6
+        handlePage={this.props.handlePage}
+      />;
+    }
+    if (this.props.page === 7)
+    {
+      data = <Layer7
+        handlePage={this.props.handlePage}
+      />;
+    }
+    // *************************************************************
 
-    const data = this.props.pagedata;
-    function createMarkup() { return {__html: data}; };
+    var button = null;
+    if (this.props.page !== 0)
+    {
+      button = (<button
+        id="text-btn-back"
+        onClick={() => this.props.handlePage(0)}>&laquo; Back</button>)
+    }
 
     return(
       <div id="textbox">
-        <button
-          id="text-btn-back"
-          onClick={this.props.click}>&laquo; Back</button>
+        {button}
         <button
           id="text-btn-map"
           onClick={this.props.clickmap}>Map&raquo;</button>
         <button
           id="text-btn-topic"
           onClick={this.props.clicktopic}>Topics&raquo;</button>
-        <div dangerouslySetInnerHTML={createMarkup()}/>
+        {data}
       </div>
     )
   }
@@ -112,7 +160,7 @@ class InterviewBox extends React.Component {
     } else {
       response = (
         <embed
-          src="./data/pdfs/1049.pdf"
+          src={"./data/pdfs/03709_" + padZeros(this.props.interview, 4) + ".pdf"}
           type="application/pdf"
           width="100%"
           height="400px"/>
@@ -135,7 +183,10 @@ class InterviewBox extends React.Component {
               pdf
             </button>
             <button
-              onClick={() => window.open("./data/pdfs/1049.pdf")}>
+              onClick={() => {
+                window.open("./data/pdfs/03709_" +
+                  padZeros(this.props.interviewdata.id, 4) + ".pdf")
+              }}>
               pdf (download)
             </button>
             <button
@@ -181,7 +232,8 @@ class InterviewTopicBox extends React.Component {
       <div className="topic-meta">
         <div className="interview-btn-grp">
           <button
-            onClick={() => window.open("./data/pdfs/1049.pdf")}>
+            onClick={() => window.open("./data/pdfs/03709_" +
+              padZeros(this.props.interviewdata.id, 4) + ".pdf")}>
             pdf
           </button>
           <button
@@ -587,7 +639,6 @@ class Viewer extends React.Component {
     super(props);
     this.state = {
       page: 0,
-      pagedata: null,
       geodata: null,
       interview: -1,
       interviewdata: null,
@@ -646,7 +697,6 @@ class Viewer extends React.Component {
   }
 
   handleOvertypeChange(value, intertype) {
-    console.log(value);
     this.setState({
       overtype: value,
     });
@@ -728,52 +778,6 @@ class Viewer extends React.Component {
         page: page,
         data: null,
       });
-
-      if (page === 0)
-      {
-        this.setState({
-          pagedata: (<div id="textbox"><div>
-            <h1 style={{paddingTop: "0px"}}> Table of Contents </h1>
-
-            <button className="toc-button" onClick={() => this.handlePage(1)}>
-              Introduction
-            </button>
-
-            <button className="toc-button"  onClick={() => this.handlePage(2)}>
-              Layer 1: Documenting People &amp; Histories
-            </button>
-
-            <button className="toc-button"  onClick={() => this.handlePage(3)}>
-              Layer 2: They Must Be Heard
-            </button>
-
-            <button className="toc-button"  onClick={() => this.handlePage(4)}>
-              Layer 3: Placing the Life Histories
-            </button>
-
-            <button className="toc-button"  onClick={() => this.handlePage(5)}>
-              Layer 4: Textual Analysis
-            </button>
-
-            <button className="toc-button"  onClick={() => this.handlePage(6)}>
-              Conclusion
-            </button>
-
-            <button className="toc-button"  onClick={() => this.handlePage(7)}>
-              Method
-            </button>
-            </div></div>
-          )
-        });
-      } else {
-        fetch("./data/layers/" + page + ".md").then(res => {
-          return res.text()
-        }).then(res => {
-          this.setState({
-            pagedata: md.render(res),
-          });
-        });
-      }
   }
 
   render() {
@@ -931,8 +935,7 @@ class Viewer extends React.Component {
 
     <TextBox
       page={this.state.page}
-      pagedata={this.state.pagedata}
-      click={() => this.handlePage(0)}
+      handlePage={this.handlePage.bind(this)}
       clickmap={() => this.handleOvertypeChange(true, 'map')}
       clicktopic={() => this.handleOvertypeChange(true, 'topic')}
     />

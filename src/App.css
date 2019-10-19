@@ -333,6 +333,7 @@ sup {
   box-sizing: border-box;
   font-family: 'Crimson Text', serif;
   padding: 30px;
+  padding-top: 45px;
 }
 
 #textbox > div > p {
@@ -362,6 +363,16 @@ sup {
 }
 
 #textbox > div > p > sup > a:hover {
+  color: var(--color-logo);
+}
+
+#textbox > div > p > a {
+  color: #a99a0f;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#textbox > div > p > a:hover {
   color: var(--color-logo);
 }
 
@@ -1008,13 +1019,16 @@ sup {
     left: 50%;
     padding: 30px;
     transform: translate(-50%, 0);
+    padding-top: 100px;
   }
+
   #header > span {
     height: 5px;
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
   }
+
   .btn-group {
     float: left;
     width: var(--text-width);
