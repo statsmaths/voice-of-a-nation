@@ -1,13 +1,6 @@
 # Ignore macOS file
 .DS_Store
 
-# Public Data and Build
-public/img
-public/data
-build/img
-build/data
-build
-
 # Logs
 logs
 *.log
