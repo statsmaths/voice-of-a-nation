@@ -14,26 +14,22 @@ function Layer0(props) {
   </button>
 
   <button className="toc-button"  onClick={() => props.handlePage(2)}>
-    Layer 1: Documenting People &amp; Histories
+    Layer 1: They Must Be Heard
   </button>
 
   <button className="toc-button"  onClick={() => props.handlePage(3)}>
-    Layer 2: They Must Be Heard
+    Layer 2: Placing the Life Histories
   </button>
 
   <button className="toc-button"  onClick={() => props.handlePage(4)}>
-    Layer 3: Placing the Life Histories
+    Layer 3: Textual Analysis
   </button>
 
   <button className="toc-button"  onClick={() => props.handlePage(5)}>
-    Layer 4: Textual Analysis
-  </button>
-
-  <button className="toc-button"  onClick={() => props.handlePage(6)}>
     Conclusion
   </button>
 
-  <button className="toc-button"  onClick={() => props.handlePage(7)}>
+  <button className="toc-button"  onClick={() => props.handlePage(6)}>
     Method
   </button>
 </div>

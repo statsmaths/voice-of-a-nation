@@ -12,7 +12,6 @@ import { Layer3 } from "./layers/Layer3";
 import { Layer4 } from "./layers/Layer4";
 import { Layer5 } from "./layers/Layer5";
 import { Layer6 } from "./layers/Layer6";
-import { Layer7 } from "./layers/Layer7";
 
 import 'leaflet/dist/leaflet.css';
 import 'react-dropdown/style.css';
@@ -74,12 +73,6 @@ class TextBox extends React.Component {
     if (this.props.page === 6)
     {
       data = <Layer6
-        handlePage={this.props.handlePage}
-      />;
-    }
-    if (this.props.page === 7)
-    {
-      data = <Layer7
         handlePage={this.props.handlePage}
       />;
     }
@@ -918,9 +911,6 @@ class Viewer extends React.Component {
         <button
           className={this.state.page === 4 ? "active" : ""}
           onClick={() => this.handlePage(4)}>3</button>
-        <button
-          className={this.state.page === 5 ? "active" : ""}
-          onClick={() => this.handlePage(5)}>4</button>
         <button
           className={this.state.page === 6 ? "active" : ""}
           onClick={() => this.handlePage(6)}>C</button>

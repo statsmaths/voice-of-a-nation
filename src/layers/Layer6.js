@@ -4,10 +4,10 @@ function Layer6(props) {
 
     return(
 <div>
-  <h1 style={{paddingTop: "0px"}}> Conclusion </h1>
+  <h1 style={{paddingTop: "0px"}}> Method </h1>
 
   <p>
-In the conclusion we unite the close archival analysis of Layers 1 and 2, the spatial analysis of Layer 3, and the textual analysis of Layer 4 to reflect on the legacies of the SLHP. Pulling together each of the Layers, we show how and why the project attempted to shape cultural memory and the telling of history. By placing the oral histories as a novel, alternative method of social documentation, we place the work of the SLHP within the long history of grappling with what “counts” as social knowledge, how to accurately represent social conditions, who could produce such knowledge, and who is and is not represented.
+The final section presents a discussion of our methodology for building the digital project. We begin by outlining the decisions made in building our textual corpora, the Life Histories Data Set. We make explicit our decisions regarding metadata such as gender and race. We then turn to the design principles inherent in our mapping process, form aesthetic decisions such as color pallets through technical decisions about technologies would be best able to visualize the data. Finally, we document the text analysis methods used throughout Layer 4.
   </p>
 
 </div>
