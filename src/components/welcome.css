@@ -1,0 +1,61 @@
+
+#welcome-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 200000;
+}
+
+.welcome-msg {
+  font-size: 1.1em;
+  left: 0%;
+  margin: auto;
+  width: 80%;
+  top: 20%;
+  background-color: var(--color-text-background);
+  position: relative;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: justify;
+}
+
+.welcome-msg > h3 {
+  font-size: 1.4em;
+  font-family: var(--title-font);
+  color: var(--color-logo);
+  text-align: left;
+}
+
+.welcome-msg > p {
+  padding: 12px;
+}
+
+.welcome-msg button {
+  cursor: pointer;
+  background-color: var(--color-background);
+  padding: 12px;
+  border: 0px;
+  color: #3b3b3b;
+  text-align: center;
+  align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin:0 auto;
+  transition: all 0.1s ease 0s;
+  line-height: 1em;
+  font-family: var(--title-font);
+  font-size: 1.3em;
+  border-radius: 15px;
+  border: solid;
+  border-color: #3b3b3b;
+  border-width: 2px;
+}
+
+.welcome-msg button:hover {
+  opacity: 0.8;
+}
+
+.welcome-msg button:active {
+  transform: scale(0.9);
+}

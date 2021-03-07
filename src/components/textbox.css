@@ -1,0 +1,224 @@
+
+/***************************************************************************/
+/****** Table of Contents *********/
+
+.toc-button {
+  cursor: pointer;
+  font-family: Special Elite;
+  line-height: 1.05em;
+  font-size: 1.2em;
+  border-radius: 25px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--color-logo);
+  padding: 12px;
+  margin-bottom: 16px;
+  width: calc(0.9 * var(--text-width));
+  text-align: center;
+  background-color: var(--color-background);
+  border-color: #3b3b3b;
+  color: #3b3b3b;
+  opacity: 0.9;
+}
+
+.toc-button:hover {
+  opacity: 1;
+}
+
+.toc-button:active {
+  transform: scale(0.98);
+}
+
+.toc-button-prop {
+  opacity: 1;
+  font-size: 1.4em;
+}
+
+.toc-button-prop:hover {
+  transform: scale(1.01);
+}
+
+
+/***************************************************************************/
+/****** Text Tooltip *********/
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+}
+
+.tooltip span {
+  visibility: hidden;
+  width: 400px;
+  background-color: #fff;
+  color: #000;
+  text-align: left;
+  border-color: #000;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -20px;
+  opacity: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: opacity 1s;
+}
+
+.tooltip span::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 5%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover span {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/***************************************************************************/
+/****** TextBox *********/
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+#textbox {
+  background-color: var(--color-text-background);
+  color: var(--color-text);
+  position: relative;
+  left: 0;
+  top: var(--header-height);
+  min-height: calc(100vh - var(--header-height));
+  width: var(--text-width);
+  box-sizing: border-box;
+  font-family: 'Crimson Text', serif;
+  padding: 30px;
+  padding-top: 45px;
+}
+
+#textbox > div > p {
+  font-family: var(--body-font);
+  line-height: 1.3em;
+  font-size: 18px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+#textbox > div > p > span {
+  color: #a99a0f;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#textbox > div > p > span:hover {
+  color: var(--color-logo);
+}
+
+#textbox > div > p > sup > a {
+  color: #a99a0f;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#textbox > div > p > sup > a:hover {
+  color: var(--color-logo);
+}
+
+#textbox > div > p > a {
+  color: #a99a0f;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#textbox > div > p > a:hover {
+  color: var(--color-logo);
+}
+
+#textbox > div > h1 {
+  font-family: var(--title-font);
+  color: var(--color-logo);
+  line-height: 1.2em;
+  font-size: 1.5em;
+  text-align: center;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+#textbox > div > h2 {
+  font-family: var(--title-font);
+  color: var(--color-logo);
+  line-height: 1.8em;
+  font-size: 22px;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+#textbox > div > .pstart:first-letter {
+  color: var(--color-logo);
+  float: left;
+  font-family: Georgia;
+  font-size: 4.5em;
+  line-height: 50px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  padding-bottom: 0px;
+}
+
+#textbox > button {
+  background-color: #f1f1f1;
+  color: black;
+  position: fixed;
+  border-radius: 4px;
+  background-color: #3b3b3b;
+  font-size: 1em;
+  cursor: pointer;
+  opacity: 1;
+  height: 30px;
+  color: #cccccc;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #cccccc;
+  transition: all 0.1s ease 0s;
+}
+
+#text-btn-back {
+  left: 0px;
+  top: 50px;
+}
+
+#text-btn-map {
+  top: 15px;
+  left: var(--text-width);
+  transform: translateX(-100%);
+  visibility: hidden;
+}
+
+#text-btn-topic {
+  top: 50px;
+  left: var(--text-width);
+  transform: translateX(-100%);
+  visibility: hidden;
+}
+
+#textbox > button:hover {
+  background-color: #4e4e4e;
+}

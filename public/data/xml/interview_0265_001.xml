@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../lifehistory.xsl" ?>
+<history>
+  <title>Deleted</title>
+  <meta>
+    <item>
+      <key>Location</key>
+      <val>Savannah, Georgia</val>
+    </item>
+    <item>
+      <key>Community</key>
+      <val>118 W. Bolton St.</val>
+    </item>
+  </meta>
+  <text>
+    <p>Pages 3509-3520 have been deleted since they are a duplicate of the story "Papa" on pages 1704-1715.</p>
+  </text>
+</history>

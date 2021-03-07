@@ -1,0 +1,120 @@
+
+.interview-btn-grp {
+  padding-top: 10px;
+}
+
+.interview-btn-grp button {
+  background-color: var(--color-background);
+  border: 1px solid green;
+  color: white;
+  padding: 5px 10px;
+  margin: 0px 3px;
+  cursor: pointer;
+}
+
+.interview-btn-grp button:hover {
+  opacity: 0.7;
+  transform: scale(1.02);
+}
+
+.interview-btn-grp > .active {
+  background-color: var(--color-logo);
+}
+
+.interview-meta {
+  font-size: 1.1em;
+  left: 0%;
+  margin: auto;
+  width: 70%;
+  top: 100px;
+  background-color: var(--color-text-background);
+  position: relative;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.interview-meta > h3 {
+  font-size: 1.3em;
+}
+
+.interview-meta > ul {
+  list-style-type:none;
+  padding-top: 6px;
+  font-weight: bold;
+  padding-bottom: 0px;
+}
+
+.interview-meta > li {
+}
+
+.interview-meta > ul > li > span {
+  color: var(--color-logo);
+  font-weight: normal;
+  right: 24px;
+}
+
+.interview-meta > h3 {
+  text-align: center;
+}
+
+.interview-meta > p {
+  padding: 25px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.interview-list-box {
+  overflow-y: auto;
+  position: relative;
+  max-height: 200px;
+}
+
+.interview-list-box ul li {
+  color: #333;
+  border-top: 1px solid #000;
+  cursor: pointer;
+  height: 2em;
+  line-height: 2em;
+  padding-left: 16px;
+}
+
+.interview-list-box a {
+  color: #333;
+  text-decoration: none;
+}
+
+.interview-list-box ul li:hover {
+  background-color: #d1cfc4;
+}
+
+#interview-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100000;
+}
+
+#interview-container > .interview-meta > .svg-close {
+  position: absolute;
+  cursor: pointer;
+  pointer-events: auto;
+  padding: 6px;
+  color: white;
+  fill: white;
+  font-weight: bold;
+  font-size: 5px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  top: 15px;
+  right: 35px;
+  user-select: none;
+  z-index: 99;
+  visibility: visible;
+}
+
+#interview-container > .interview-meta > .svg-close:hover {
+  opacity: 0.7;
+  transform: scale(1.02);
+}

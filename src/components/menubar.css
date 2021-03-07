@@ -1,0 +1,78 @@
+
+#header {
+  font-family: var(--title-font);
+  background-color: var(--color-logo);
+  text-align: left;
+  color: var(--color-logo-text);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: var(--header-height);
+  z-index: 9999;
+  align-items: center;
+}
+
+#header > span {
+  cursor: pointer;
+  float: left;
+  text-align: center;
+  font-size: 1.1em;
+  height:var(--title-height);
+  width:var(--text-width);
+  user-select: none;
+  line-height: var(--title-height);
+}
+
+.btn-group {
+  height: var(--title-height);
+  float: right;
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-group > button {
+  background-color: #3b3b3b;
+  font-family: Special Elite;
+  font-size: 1em;
+  cursor: pointer;
+  opacity: 1;
+  width: 30px;
+  height: 30px;
+  color: #cccccc;
+  border: none;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #cccccc;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  transition: all 0.1s ease 0s;
+  line-height: 1.2em;
+}
+
+.btn-group button:hover {
+  background-color: #4e4e4e;
+}
+
+.btn-group button:active {
+  background-color: #4e4e4e;
+  transform: scale(0.96);
+}
+
+.btn-group > .active {
+  color: #CDA34F;
+  border-color: #CDA34F;
+  border-width: 2px;
+}
+
+.btn-group > .btn-text {
+  width: auto;
+  margin-left: 25px;
+}
