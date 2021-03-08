@@ -2,7 +2,7 @@
 import Dropdown from 'react-dropdown';
 
 import {
-  Map, CircleMarker, TileLayer, ZoomControl, Tooltip
+  Map, Circle, TileLayer, ZoomControl, Tooltip
 } from 'react-leaflet';
 import { Legend } from "./legend.js";
 import { InterviewBox } from "./interviewbox.js";
@@ -93,9 +93,9 @@ class InterviewMap extends React.Component {
               this.state.geodata.map( (val, i) => {
                 return (
                   <div key={i}>
-                    <CircleMarker
+                    <Circle
                       center={[val.lat, val.lon]}
-                      radius={val.size}
+                      radius={val.size * 1600}
                       color={val.color}
                       stroke={false}
                       onClick={() => this.handleSelectPoint(i)}>
@@ -103,7 +103,7 @@ class InterviewMap extends React.Component {
                         <b>{val.title}</b><br/>
                         {val.subtitle}
                       </Tooltip>
-                    </CircleMarker>
+                    </Circle>
                   </div>
                 )
               })

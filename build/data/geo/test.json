@@ -1,0 +1,28 @@
+[
+  {
+    "lon": -81.089795,
+    "lat": 34.369334,
+    "size": 8,
+    "color": "red",
+    "title": "Placename",
+    "subtitle": "details",
+    "links": [
+      {"title": "An interview A", "file": "interview_0001_000.xml"},
+      {"title": "An interview B", "file": "interview_0002_000.xml"},
+      {"title": "An interview C", "file": "interview_0003_000.xml"}
+    ]
+  },
+  {
+    "lon": -83.089795,
+    "lat": 37.369334,
+    "size": 20,
+    "color": "red",
+    "title": "Hello",
+    "subtitle": "details",
+    "links": [
+      {"title": "Another interview A", "file": "interview_0001_000.xml"},
+      {"title": "Another interview B", "file": "interview_0002_000.xml"},
+      {"title": "Another interview C", "file": "interview_0003_000.xml"}
+    ]
+  }
+]

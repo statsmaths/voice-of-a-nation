@@ -60,7 +60,7 @@
   border-radius: 3px;
   padding: 5px 10px;
   position: absolute;
-  z-index: 1;
+  z-index: 100;
   bottom: 125%;
   left: 50%;
   margin-left: -20px;
@@ -108,7 +108,7 @@ sup {
   padding-top: 45px;
 }
 
-#textbox > div > p {
+#textbox p {
   font-family: var(--body-font);
   line-height: 1.3em;
   font-size: 18px;
@@ -118,33 +118,81 @@ sup {
   text-justify: inter-word;
 }
 
-#textbox > div > p > span {
+#textbox .Collapsible {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#textbox .Collapsible > span {
+  font-family: var(--body-font);
+  line-height: 2.2em;
+  font-size: 22px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+#textbox .Collapsible__contentOuter {
+  border-top: 1px solid #aaa;
+  padding-top: 16px;
+}
+
+.Collapsible__trigger {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  padding: 10px;
+  color: black;
+}
+
+.Collapsible__trigger:after {
+  font-family: 'FontAwesome';
+  content: '\f107';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+  transition: transform 300ms;
+}
+
+.Collapsible__trigger.is-open:after {
+  transform: rotateZ(180deg);
+}
+
+.Collapsible__trigger.is-disabled {
+  opacity: 0.5;
+  background-color: grey;
+}
+
+
+#textbox p > span {
   color: #a99a0f;
   cursor: pointer;
   text-decoration: none;
 }
 
-#textbox > div > p > span:hover {
+#textbox p > span:hover {
   color: var(--color-logo);
 }
 
-#textbox > div > p > sup > a {
+#textbox p > sup > a {
   color: #a99a0f;
   cursor: pointer;
   text-decoration: none;
 }
 
-#textbox > div > p > sup > a:hover {
+#textbox p > sup > a:hover {
   color: var(--color-logo);
 }
 
-#textbox > div > p > a {
+#textbox  p > a {
   color: #a99a0f;
   cursor: pointer;
   text-decoration: none;
 }
 
-#textbox > div > p > a:hover {
+#textbox  p > a:hover {
   color: var(--color-logo);
 }
 
@@ -221,4 +269,8 @@ sup {
 
 #textbox > button:hover {
   background-color: #4e4e4e;
+}
+
+.text-holder {
+  margin-bottom: 100px;
 }
