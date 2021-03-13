@@ -1,48 +1,65 @@
-  import React from 'react';
-import Dropdown from 'react-dropdown';
+import React from 'react';
+import Select, { components } from 'react-select';
+import {
+  useHistory
+} from "react-router-dom";
 
 import {
-  Map, Circle, TileLayer, ZoomControl, Tooltip
+  MapContainer, Circle, TileLayer, ZoomControl, Tooltip
 } from 'react-leaflet';
 import { Legend } from "./legend.js";
 import { InterviewBox } from "./interviewbox.js";
 
-import 'react-dropdown/style.css';
 import 'leaflet/dist/leaflet.css';
 import './interviewmap.css';
 
+function MapOption(props)
+{
+  let history = useHistory();
+  function handleClick(data) {
+    let res = new URLSearchParams(history.location.search);
+    res.set("maptype", data.value);
+
+    history.push({
+        "pathname": "/map",
+        "search": "?" + res.toString()
+    });
+  }
+
+  return (
+    <div onClick={() => handleClick(props)}>
+      <components.Option {...props} />
+    </div>
+  );
+};
+
+function queryUrl(query, key, fallback = null) {
+  let res = (new URLSearchParams(query)).get(key);
+  return res === null ? fallback : res;
+}
 
 class InterviewMap extends React.Component {
 
     constructor(props) {
       super(props);
       this.state = {
-        geodata: null,
-        geolegend: null,
-        mapname: { value: "geo_all.json", label: 'All Interviews' },
+        data: null,
+        mapname: { value: "geo_all", label: 'Select a map ...' },
         selectid: -1,
       }
     }
 
     componentDidMount() {
-      this.handleMapnameChange(this.state.mapname);
-    }
-
-    handleMapnameChange(option) {
-      fetch("./data/geo/" + option.value).then(res => {
+      fetch("./data/json/geo.json").then(res => {
         return res.json()
       }).then(res => {
         this.setState({
-          geodata: res.points,
-          geolegend: res.legend,
-          mapname: option,
-          selectid: -1
+          data: res
         });
       })
     }
 
     handleSelectPoint(value) {
-      console.log(this.state.geolegend);
       this.setState({
         selectid: value,
       });
@@ -50,22 +67,26 @@ class InterviewMap extends React.Component {
 
     render() {
 
-      if (!this.state.geodata) {
-        return <span>Waiting...</span>
+      if (!this.state.data) {
+        return <span></span>
       }
 
       const mapname_options = [
-        { value: 'geo_all.json', label: 'All Interviews' },
-        { value: 'geo_writers.json', label: 'Prolific Writers' },
-        { value: 'geo_women_writers.json', label: 'Women Writers' },
-        { value: 'geo_black_writers.json', label: 'Black Writers' },
-        { value: 'geo_ethnic.json', label: 'Interviewee Ethnicity' },
-        { value: 'geo_occupation.json', label: 'Occupations' }
+        { value: 'geo_all', label: 'All Interviews' },
+        { value: 'geo_writers', label: 'Prolific Writers' },
+        { value: 'geo_women_writers', label: 'Women Writers' },
+        { value: 'geo_black_writers', label: 'Black Writers' },
+        { value: 'geo_ethnic', label: 'Interviewee Ethnicity' },
+        { value: 'geo_occupation', label: 'Occupations' }
       ];
+
+      let mtype = queryUrl(this.props.location.search, "maptype", "geo_all");
+      let geodata = this.state.data[mtype].points;
+      let geolegend = this.state.data[mtype].legend;
 
       var map = (
         <div id="map-container">
-          <Map
+          <MapContainer
             bounds={[[25.53511, -92.33793], [38.47061, -75.68696]]}
             zoomControl={false}
             scrollWheelZoom={false}
@@ -79,7 +100,7 @@ class InterviewMap extends React.Component {
               />
             <Legend
               position='bottomright'
-              geolegend={this.state.geolegend}
+              geolegend={geolegend}
               />
             <TileLayer
               url="./data/tiles/{z}/{x}/{y}.png"
@@ -90,15 +111,20 @@ class InterviewMap extends React.Component {
             />
 
             {
-              this.state.geodata.map( (val, i) => {
+              geodata.map( (val, i) => {
                 return (
                   <div key={i}>
                     <Circle
                       center={[val.lat, val.lon]}
                       radius={val.size * 1600}
-                      color={val.color}
-                      stroke={false}
-                      onClick={() => this.handleSelectPoint(i)}>
+                      pathOptions={{
+                        color: val.color,
+                        fillOpacity: 0.5,
+                        weight: 1
+                      }}
+                      eventHandlers={{
+                        click: () => this.handleSelectPoint(i)
+                      }}>
                       <Tooltip direction="top" offset={[0,-6]}>
                         <b>{val.title}</b><br/>
                         {val.subtitle}
@@ -111,31 +137,34 @@ class InterviewMap extends React.Component {
 
             <div className="custom-leaflet leaflet-top leaflet-right">
               <div className="custom-leaflet-inner" >
-                 <Dropdown options={mapname_options}
-                  value={ this.state.mapstate }
-                  placeholder="Select a map ..."
-                  onChange={(e) => this.handleMapnameChange(e)}
-                  className="dropdown"
-                  />
+
               </div>
             </div>
 
-          </Map>
+          </MapContainer>
         </div>
       )
 
       return (
-
+        <div>
+          <Select
+            options={ mapname_options }
+            className="mapselect"
+            isSearchable={false}
+            components={{ Option: MapOption }}
+            placeholder="Select a map ..."
+            />
           <div id="map-container">
             {map}
             <InterviewBox
               selectid={ this.state.selectid }
-              selection={ this.state.geodata[this.state.selectid] }
+              selection={ geodata[this.state.selectid] }
               handleSelectPoint={this.handleSelectPoint.bind(this)}
             />
           </div>
-
+          </div>
       );
+
     }
 
 

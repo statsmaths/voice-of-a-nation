@@ -21,7 +21,6 @@
 }
 
 .leaflet-interactive {
-  fill-opacity: 0.5;
   transition: transform 2s;
 }
 
@@ -44,6 +43,10 @@
 .leaflet-control-zoom {
   top: 50px;
   right: 24px;
+}
+
+.leaflet-control.legend {
+  width: 170px !important;
 }
 
 .dropdown {

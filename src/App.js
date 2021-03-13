@@ -1,11 +1,12 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
+  Redirect,
   Route,
-  Link,
+  Switch,
+  Link
 } from "react-router-dom";
 
-import { Welcome } from "./components/welcome.js"
 import { MenuBar } from "./components/menubar.js";
 import { TextBox } from "./components/textbox.js";
 import { TopicContainer } from "./components/theme/topiccontainer.js";
@@ -46,32 +47,34 @@ class Viewer extends React.Component {
       />
 
       <div id="multi-container">
+          <Switch>
+            <Route path="/theme">
+              <TopicContainer
+                location={this.props.location}
+              />
+              <div className="overlay-btn-grp">
+                <Link to="/map">
+                  <button>
+                    Map
+                  </button>
+                </Link>
+              </div>
+            </Route>
+            <Route path="/map">
+              <div className="overlay-btn-grp">
+                <Link to="/theme">
+                  <button>
+                    Themes
+                  </button>
+                </Link>
+              </div>
+            </Route>
+            <Route>
+              <Redirect to="/map"/>
+            </Route>
+          </Switch>
 
-        <Router>
-          <Route exact path="/">
-            <Welcome/>
-          </Route>
-          <Route path="/theme">
-            <TopicContainer/>
-            <div className="overlay-btn-grp">
-              <Link to="/map">
-                <button>
-                  Map
-                </button>
-              </Link>
-            </div>
-          </Route>
-          <Route path="/map">
-            <div className="overlay-btn-grp">
-              <Link to="/theme">
-                <button>
-                  Themes
-                </button>
-              </Link>
-            </div>
-          </Route>
-        </Router>
-        <InterviewMap/>
+        <InterviewMap location={this.props.location} />
 
       </div>
 
@@ -90,7 +93,9 @@ class Viewer extends React.Component {
 
 function App() {
   return (
-    <Viewer />
+    <Router>
+      <Route component={Viewer} />
+    </Router>
   );
 }
 

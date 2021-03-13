@@ -13,6 +13,12 @@
           <xsl:for-each select="history/meta/item">
             <li><b><xsl:value-of select="key"/></b>: <xsl:value-of select="val"/></li>
           </xsl:for-each>
+          <li>
+            <b>PDF</b>:
+            <a href="{history/reflink}" style="color: grey">
+              <xsl:value-of select="history/reflink"/>
+            </a>
+          </li>
         </ul>
       </div>
       <hr style="width: min(98%, 730px); margin-right:100%"/>

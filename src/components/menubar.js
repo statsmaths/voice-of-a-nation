@@ -10,7 +10,8 @@ class MenuBar extends React.Component {
       <div id="header">
 
         <span onClick={() => this.props.handlePage(0)}>
-          Voice of a Nation: Life Histories in New Deal America
+          "They Must Be Heard": Documentary Representation and the
+          Southern Life History Project
         </span>
 
         <div className="btn-group">

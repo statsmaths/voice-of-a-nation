@@ -64,6 +64,7 @@
   bottom: 125%;
   left: 50%;
   margin-left: -20px;
+  margin-bottom: 1em;
   opacity: 0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: opacity 1s;
@@ -90,8 +91,17 @@
 /****** TextBox *********/
 
 sup {
-  vertical-align: super;
-  font-size: smaller;
+  font-size: 0.8em !important;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  top: -0.5em;
+}
+
+sup span {
+  font-size: 1.1em;
+  line-height: 1.2em;
+  justify-content: space-between;
 }
 
 #textbox {
