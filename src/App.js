@@ -34,6 +34,8 @@ class Viewer extends React.Component {
 
   render() {
 
+    console.log(process.env.PUBLIC_URL);
+
     return (
     <div>
       <MenuBar
@@ -93,7 +95,7 @@ class Viewer extends React.Component {
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Route component={Viewer} />
     </Router>
   );

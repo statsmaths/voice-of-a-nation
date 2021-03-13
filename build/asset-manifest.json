@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/voice-of-a-nation/build/static/css/main.8944a72e.chunk.css",
-    "main.js": "/voice-of-a-nation/build/static/js/main.b29f7f5f.chunk.js",
-    "main.js.map": "/voice-of-a-nation/build/static/js/main.b29f7f5f.chunk.js.map",
+    "main.js": "/voice-of-a-nation/build/static/js/main.8bfe6681.chunk.js",
+    "main.js.map": "/voice-of-a-nation/build/static/js/main.8bfe6681.chunk.js.map",
     "runtime-main.js": "/voice-of-a-nation/build/static/js/runtime-main.ab66b2d7.js",
     "runtime-main.js.map": "/voice-of-a-nation/build/static/js/runtime-main.ab66b2d7.js.map",
     "static/css/2.c1e28d34.chunk.css": "/voice-of-a-nation/build/static/css/2.c1e28d34.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.c1e28d34.chunk.css",
     "static/js/2.f657bb25.chunk.js",
     "static/css/main.8944a72e.chunk.css",
-    "static/js/main.b29f7f5f.chunk.js"
+    "static/js/main.8bfe6681.chunk.js"
   ]
 }
