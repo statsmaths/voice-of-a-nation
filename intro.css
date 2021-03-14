@@ -90,11 +90,6 @@ a {
 }
 
 .fpage > .enter a {
-  color: inherit;
-  display: block;
-}
-
-.fpage > .enter > .enterbtn {
   display: inline-block;
   color: #ccc;
   font-size: 2em;
@@ -108,7 +103,7 @@ a {
   transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 
-.fpage > .enter > .enterbtn:hover {
+.fpage > .enter > a:hover {
   color: #000;
   background: #CDA34F;
 }
