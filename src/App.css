@@ -26,7 +26,6 @@ html, body {
 }
 
 .container {
-  min-width: 900px;
 }
 
 .hidden-sml {
@@ -143,7 +142,7 @@ footer {
   color: var(--color-logo-text);
   position: fixed;
   bottom: 0;
-  width: 100vw;
+  width: max(100vw, 1000px);
   height: 40px;
   z-index: 9999;
   display: block;
@@ -162,7 +161,7 @@ footer > div {
 }
 
 footer > div div {
-  font-size: 0.8em;
+  font-size: 0.7em;
   position: relative;
   box-sizing: border-box;
 }
@@ -188,138 +187,14 @@ footer > div div:nth-child(3)::after {
   box-sizing: border-box;
 }
 
-
-
 /***************************************************************************/
 /****** Interactivity => 850px *********/
 
-@media only screen and (max-width: 970px) {
-  :root {
-    --header-height: 100px;
-    --title-height: 26px;
-  }
+@media only screen and (max-width: 880px) {
 
-  #multi-container {
+  .mapselect {
     visibility: hidden;
   }
 
-  #img-fig {
-    position:relative;
-    top: 180px;
-    left: 50%;
-    font-size: 0.8em;
-    top: 15px;
-    max-width: 60%;
-    max-height: 90%;
-    background-color: var(--color-text-background);
-    position: absolute;
-    transform: translate(-50%, 0);
-    border-radius: 10px;
-    padding: 25px;
-  }
-
-  #textbox {
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 100%;
-    font-size: 0.7em;
-    padding: 5px;
-  }
-
-  #header > span {
-    height: 5px;
-    width: 300px;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);
-    line-height: var(--title-height);
-  }
-
-  .btn-group {
-    float: left;
-    width: var(--text-width);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    position: relative;
-    left: 50%;
-    top: calc(var(--title-height) * 2);
-    transform: translate(-50%, 0);
-  }
-
-  .btn-group > button {
-    font-size: 0.8em;
-    width: 25px;
-    height: 25px;
-    padding: 5px;
-    margin-left: 5px;
-    border-radius: 15px;
-  }
-
-  #img-fig > .svg-close {
-    right: 30px;
-    transform: scale(0.8);
-  }
-
-  #map-container > .svg-close {
-    visibility: inherit;
-    visibility: hidden;
-  }
-  .hidden-sml {
-    visibility: hidden;
-    display: none;
-  }
-
-  #text-btn-back {
-    left: 0px;
-    top: 15px;
-  }
-
-  #text-btn-map {
-    visibility: hidden;
-  }
-  #text-btn-topic {
-    visibility: hidden;
-  }
-
-  .overlay-btn-grp {
-    visibility: hidden;
-  }
-
-  #textbox > div > h1 {
-    padding-top: 55px;
-    padding-bottom: 18px;
-  }
-
-  #multi-btn-back {
-    visibility: visible;
-  }
-
-  #footer > #notice {
-    visibility: hidden;
-    display: none;
-    width: 0;
-  }
-
-  .toc-button {
-    cursor: pointer;
-    font-family: Special Elite;
-    line-height: 1.05em;
-    font-size: 1.2em;
-    border-radius: 25px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: var(--color-logo);
-    padding: 12px;
-    margin-bottom: 16px;
-    width: 70vw;
-    margin-left: 15vw;
-    text-align: center;
-    background-color: var(--color-background);
-    border-color: #3b3b3b;
-    color: #3b3b3b;
-    opacity: 0.9;
-  }
 
 }

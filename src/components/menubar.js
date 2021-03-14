@@ -24,9 +24,9 @@ class MenuBar extends React.Component {
           <button
             className={this.props.page === 3 ? "active" : ""}
             onClick={() => this.props.handlePage(3)}>2</button>
-        <button
-          className={this.props.page === 4 ? "active" : ""}
-          onClick={() => this.props.handlePage(4)}>3</button>
+          <button
+            className={this.props.page === 4 ? "active" : ""}
+            onClick={() => this.props.handlePage(4)}>3</button>
           <button
             className={this.props.page === 5 ? "active" : ""}
             onClick={() => this.props.handlePage(5)}>4</button>
@@ -36,6 +36,9 @@ class MenuBar extends React.Component {
           <button
             className={this.props.page === 7 ? "active" : ""}
             onClick={() => this.props.handlePage(7)}>M</button>
+          <button
+            className={this.props.page === 8 ? "active" : ""}
+            onClick={() => this.props.handlePage(8)}>B</button>
         </div>
       </div>
     );

@@ -331,13 +331,15 @@ class TopicContainer extends React.Component {
 
     if (cnum === -1) {
       topicpart = (
-        <div className="topic-part">
-          <TopicBar
-            td={td}
-            weights={td.all.map(val => {return(val[prop])})}
-            mname={theme_labels[type]}
-            wname={meta_labels[prop]}
-          />
+        <div>
+          <div className="topic-part">
+            <TopicBar
+              td={td}
+              weights={td.all.map(val => {return(val[prop])})}
+              mname={theme_labels[type]}
+              wname={meta_labels[prop]}
+            />
+          </div>
         </div>
       );
     } else {

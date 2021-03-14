@@ -8,6 +8,7 @@ import { Layer4 } from "./layers/Layer4";
 import { Layer5 } from "./layers/Layer5";
 import { Layer6 } from "./layers/Layer6";
 import { Layer7 } from "./layers/Layer7";
+import { Layer8 } from "./layers/Layer8";
 
 import './textbox.css';
 
@@ -62,6 +63,12 @@ class TextBox extends React.Component {
     if (this.props.page === 7)
     {
       data = <Layer7
+        handlePage={this.props.handlePage}
+      />;
+    }
+    if (this.props.page === 8)
+    {
+      data = <Layer8
         handlePage={this.props.handlePage}
       />;
     }
