@@ -6,6 +6,7 @@ import {
   Switch,
   Link
 } from "react-router-dom";
+import {isMobile} from 'react-device-detect';
 
 import { MenuBar } from "./components/menubar.js";
 import { TextBox } from "./components/textbox.js";
@@ -23,6 +24,7 @@ class Viewer extends React.Component {
     super(props);
     this.state = {
       page: 0,
+      mobileFlag: false | isMobile
     }
   }
 
@@ -34,10 +36,8 @@ class Viewer extends React.Component {
 
   render() {
 
-    console.log(process.env.PUBLIC_URL);
-
     return (
-    <div>
+    <div className="container">
       <MenuBar
         page={this.state.page}
         handlePage={this.handlePage.bind(this)}
@@ -48,6 +48,8 @@ class Viewer extends React.Component {
         handlePage={this.handlePage.bind(this)}
       />
 
+
+      {(!this.state.mobileFlag) && (
       <div id="multi-container">
           <Switch>
             <Route path="/theme">
@@ -78,12 +80,17 @@ class Viewer extends React.Component {
 
         <InterviewMap location={this.props.location} />
 
-      </div>
+      </div>)}
 
-      <div id="footer">
-        <span id="authors">T. Arnold, C. Rivard, L. Tilton</span>
-        <span id="notice">Stanford University Press | Digital Project </span>
-      </div>
+      <footer>
+        <div id="footer">
+          <div>©2021 Stanford University | Terms of Use</div>
+          <div>ISBN XXXXXXXXXXXX | DOI 10.XXXXX/XXXXXXXX | OCLC XXXXXXXX</div>
+          <div>
+            Published by Stanford University Press
+          </div>
+        </div>
+      </footer>
 
     </div>
     );

@@ -6,7 +6,7 @@
   color: var(--color-logo-text);
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: max(100vw, 1300px);
   height: var(--header-height);
   z-index: 9999;
   align-items: center;
@@ -26,7 +26,7 @@
 .btn-group {
   height: var(--title-height);
   float: right;
-  width: 400px;
+  padding-right: 12px;
   display: flex;
   flex-direction: row;
 }

@@ -25,6 +25,10 @@ html, body {
   background-color: var(--color-text-background);
 }
 
+.container {
+  min-width: 900px;
+}
+
 .hidden-sml {
   visibility: visible;
 }
@@ -133,47 +137,70 @@ html, body {
 /***************************************************************************/
 /****** Footer *********/
 
-#footer {
+footer {
   background-color: var(--color-logo);
   font-family: var(--title-font);
   color: var(--color-logo-text);
   position: fixed;
   bottom: 0;
   width: 100vw;
-  height: 20px;
+  height: 40px;
   z-index: 9999;
+  display: block;
+}
+
+footer > div {
+  height: 40px;
   display: flex;
-  align-items: center;
-  display: flex;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+  margin: 0 auto;
+  border: 0;
 }
 
-#footer > #authors {
+footer > div div {
   font-size: 0.8em;
-  padding-left: 25px;
+  position: relative;
+  box-sizing: border-box;
 }
 
-#footer > #notice {
-  padding-right: 0px;
-  font-size: 0.8em;
-  padding-right: 25px;
+footer > div div:nth-child(3) {
+  text-align: right;
+  padding-right: 40px;
 }
+
+footer > div div:nth-child(3)::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 40px;
+  width: 20px;
+  background: url("sup-mark-rev.svg");
+  background-position: left center;
+  background-repeat: no-repeat;
+  transform: translateY(-12px);
+  top: 0;
+  right: 0;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+
 
 /***************************************************************************/
 /****** Interactivity => 850px *********/
 
 @media only screen and (max-width: 970px) {
   :root {
-    --header-height: 90px;
+    --header-height: 100px;
+    --title-height: 26px;
   }
 
   #multi-container {
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 50px);
+    visibility: hidden;
   }
 
   #img-fig {
@@ -194,16 +221,19 @@ html, body {
   #textbox {
     position: relative;
     left: 50%;
-    padding: 30px;
     transform: translate(-50%, 0);
-    padding-top: 100px;
+    width: 100%;
+    font-size: 0.7em;
+    padding: 5px;
   }
 
   #header > span {
     height: 5px;
+    width: 300px;
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
+    line-height: var(--title-height);
   }
 
   .btn-group {
@@ -214,12 +244,24 @@ html, body {
     justify-content: center;
     position: relative;
     left: 50%;
-    top: var(--title-height);
+    top: calc(var(--title-height) * 2);
     transform: translate(-50%, 0);
   }
-  #img-fig > .svg-close {
-    visibility: inherit;
+
+  .btn-group > button {
+    font-size: 0.8em;
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    margin-left: 5px;
+    border-radius: 15px;
   }
+
+  #img-fig > .svg-close {
+    right: 30px;
+    transform: scale(0.8);
+  }
+
   #map-container > .svg-close {
     visibility: inherit;
     visibility: hidden;
@@ -235,11 +277,10 @@ html, body {
   }
 
   #text-btn-map {
-    visibility: visible;
+    visibility: hidden;
   }
-
   #text-btn-topic {
-    visibility: visible;
+    visibility: hidden;
   }
 
   .overlay-btn-grp {
@@ -254,53 +295,11 @@ html, body {
   #multi-btn-back {
     visibility: visible;
   }
-}
 
-/***************************************************************************/
-/****** Interactivity => 550px *********/
-
-@media only screen and (max-width: 550px) {
-  :root {
-    --header-height: 100px;
-    --title-height: 26px;
-  }
-  #header > span {
-    width: 300px;
-    line-height: var(--title-height);
-  }
-  .btn-group {
-    position: relative;
-    left: 50%;
-    top: calc(var(--title-height) * 2);
-    transform: translate(-50%, 0);
-  }
-  .btn-group > button {
-    font-size: 0.8em;
-    width: 25px;
-    height: 25px;
-    padding: 5px;
-    margin-left: 5px;
-    border-radius: 15px;
-  }
-  #textbox {
-    width: 100%;
-    font-size: 0.7em;
-    padding: 5px;
-  }
   #footer > #notice {
     visibility: hidden;
     display: none;
     width: 0;
-  }
-  #img-fig > .svg-close {
-    right: 30px;
-    transform: scale(0.8);
-  }
-  #text-btn-map {
-    visibility: hidden;
-  }
-  #text-btn-topic {
-    visibility: hidden;
   }
 
   .toc-button {
@@ -323,7 +322,4 @@ html, body {
     opacity: 0.9;
   }
 
-  #multi-container {
-    visibility: hidden;
-  }
 }

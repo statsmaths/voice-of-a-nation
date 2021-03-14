@@ -170,7 +170,7 @@ function TopicBar(props) {
 
 }
 
-function openXmlId(id) { window.open("/data/xml/" + id + ".xml", '_blank'); }
+function openXmlId(id) { window.open("./data/xml/" + id + ".xml", '_blank'); }
 
 function DocBar(props) {
 

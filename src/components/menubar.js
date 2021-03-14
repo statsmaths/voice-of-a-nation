@@ -10,9 +10,9 @@ class MenuBar extends React.Component {
       <div id="header">
 
         <span onClick={() => this.props.handlePage(0)}>
-          "They Must Be Heard": Documentary Representation and the
-          Southern Life History Project
+          <span style={{fontWeight: "bold", fontSize: "1.4em"}}>WRITING THEIR VOICES</span>
         </span>
+        <span style={{color: "#cccccc", paddingLeft: "40px"}}>Taylor Arnold &bull; Courtney Rivard &bull; Lauren Tilton</span>
 
         <div className="btn-group">
           <button
@@ -36,9 +36,6 @@ class MenuBar extends React.Component {
           <button
             className={this.props.page === 7 ? "active" : ""}
             onClick={() => this.props.handlePage(7)}>M</button>
-          <button
-            className={this.props.page === 0 ? "btn-text active" : "btn-text"}
-            onClick={() => this.props.handlePage(0)}>Contents</button>
         </div>
       </div>
     );
